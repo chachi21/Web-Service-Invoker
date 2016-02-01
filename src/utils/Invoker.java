@@ -25,7 +25,7 @@ public class Invoker {
 		Object o = m.invoke(serv, args);
 		HashMap<String, Object> r = new HashMap<String, Object>();
 		if(m.getReturnType().getName().contains("String")){
-			r.put("value", o);
+			r.put("Output", o);
 			return r;
 		}
 		r = (HashMap<String, Object>) o.getClass().getMethod("getReturnedData", null).invoke(o, null);

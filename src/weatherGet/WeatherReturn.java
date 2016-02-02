@@ -59,7 +59,7 @@ import utils.ReturnType;
     "windChill",
     "remarks"
 })
-public class WeatherReturn extends ReturnType {
+public class WeatherReturn extends ReturnType{
 
     @XmlElement(name = "Success")
     protected boolean success;

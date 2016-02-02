@@ -28,7 +28,11 @@ public class Invoker {
 			r.put("Output", o);
 			return r;
 		}
-		r = (HashMap<String, Object>) o.getClass().getMethod("getReturnedData", null).invoke(o, null);
+		try {
+			r = (HashMap<String, Object>) o.getClass().getMethod("getReturnedData", null).invoke(o, null);
+		} catch (NoSuchMethodException e) {
+			System.err.println("Falta extender e implementar el metodo getReturnedData() en los tipos de retorno complejos.");
+		}
 		return r;
 	 }
 	 

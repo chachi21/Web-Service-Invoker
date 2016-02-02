@@ -37,13 +37,13 @@ public class main {
 	
 	public static void main(String[] args) {
 				
-		/*System.out.println("intento ejecutar los del clima");
+		System.out.println("intento ejecutar los del clima");
 		HashMap<String, Object> o2 = getReturnedDataFromWebService("weatherGet.Weather", "getWeatherSoap", "weatherGet.WeatherSoap", "getCityWeatherByZIP", new Object[]{new String("10007")});
 		System.out.println("salida: "+o2);
 		
 		System.out.println("intento ejecutarlo la conversion de farenheit a celsius");
 		Object o = getReturnedDataFromWebService("tempConverter.TempConvert", "getTempConvertSoap", "tempConverter.TempConvertSoap", "fahrenheitToCelsius", new Object[]{o2.get("Temperature")});
-		System.out.println("salida: "+o.toString());*/
+		System.out.println("salida: "+o.toString());
 			
     }
 }

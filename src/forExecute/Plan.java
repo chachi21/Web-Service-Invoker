@@ -7,30 +7,31 @@ import java.util.Set;
 public class Plan extends AbstractPlan {
 
 	private List<String> actions;
-	private HashMap<String, Service> services;
+	private HashMap<String, Action> services;
 	
-	public Plan(List<String> actions, HashMap<String, Service> services, HashMap<String, String> inputs, HashMap<String, String> outputs){
+	public Plan(List<String> actions, HashMap<String, Action> services, HashMap<String, String> inputs, HashMap<String, String> outputs){
 		this.actions = actions;
 		this.services = services;
-		this.inputs = inputs;
-		this.outputs = outputs;
+		this.initialState = inputs;
+		this.finalState = outputs;
 	}
 	
-	public HashMap<String, String> execute() {
+	public String execute() {
 		HashMap<String, String> partialResult = new HashMap<String, String>();
-		partialResult.putAll(inputs);
+		partialResult.putAll(this.initialState);
 		Set<String> servicesSet = services.keySet();
-		for(String action: actions){
+		String result = "";
+		for(String actionName: actions){
 			for(String name : servicesSet)
-				if(action.contains(name)){
-					Service serv = services.get(name);
-					partialResult.putAll(serv.execute(partialResult));
+				if(actionName.contains(name)){
+					Action action = services.get(name);
+					action.setInitialState(partialResult);
+					result+=action.execute();
+					//partialResult.putAll(serv.execute(partialResult));
 				}
 		}
-		for(String out : partialResult.keySet())
-			if(outputs.containsKey(out))
-				outputs.put(out, partialResult.get(out));
-		return this.outputs;
+		
+		return result;
 	}
 
 }

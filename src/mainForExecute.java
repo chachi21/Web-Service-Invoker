@@ -36,7 +36,7 @@ public class mainForExecute {
 		inputsTemperature.put("city", null);
 		inputsTemperature.put("date", null);
 		//outputsTemperature.put("temperaturecelsius", "4");
-		String urlTemperature = "http://192.168.0.13:8080/api/gettemperaturecelsius?";
+		String urlTemperature = "http://localhost:8080/api/gettemperaturecelsius?";
 		RestService temperatureRestService = new RestService();
 		temperatureRestService.setUrlBase(urlTemperature);
 		Action temperatureAction = new Action(inputsTemperature, temperatureRestService);

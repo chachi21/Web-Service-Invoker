@@ -56,8 +56,6 @@ public class RestService extends AbstractService{
 			for(String param : this.paramsOrder){
 				this.urlBase += param + "=" + this.params.get(param) + "&";
 			}
-			this.urlBase = this.urlBase.substring(7, this.urlBase.length()-1);
-			this.urlBase = "//" + this.urlBase;
 			URL urlConnect = new URL(this.urlBase);
 			HttpURLConnection conn = (HttpURLConnection) urlConnect.openConnection();
 			conn.setRequestMethod("GET");
